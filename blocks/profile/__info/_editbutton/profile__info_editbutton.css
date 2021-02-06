@@ -1,0 +1,24 @@
+.profile__info_editbutton {
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    margin-left: 18px;
+    margin-top: 15px;
+    background-image: url(../../../../images/EditButton.png);
+    background-size: cover;
+    background-position: center;
+}
+.profile__info_editbutton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+@media all and (max-width: 1023px) {
+    .profile__info_editbutton {
+        width: 18px;
+        height: 18px;
+        margin-left: 10px;
+        margin-top: 8px;
+    }
+}

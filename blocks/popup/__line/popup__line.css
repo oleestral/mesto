@@ -1,0 +1,12 @@
+.popup__line {
+    padding: 0;
+    opacity: 0.2;
+    border: 1px solid #000000;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+@media all and (max-width: 1279px) {
+    .popup__line {
+        margin-right: 0;
+    }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Места России</title>
+  <link rel = "stylesheet" href = "pages/index.css">
+</head>
+<body class = "root">
+  <div  class = "page">
+    <header class = "header">
+      <img class = "header__logo" src= "images/logo.png" alt = "Место Россия">
+      <div class = "header__line"></div>
+    </header>
+    <main class = "content">
+      <section class = "profile">
+        <img class = "profile__avatar" src = "images/image.png" alt = "Фотография профиля">
+        <div class = "profile__info">
+          <div class = "profile__info_items">
+            <h1 class = "profile__info_name">Жак-Ив Кусто</h1>
+            <p class = "profile__info_selfdescription">Исследователь океана</p>
+          </div>
+          <button class = "profile__info_editbutton"></button>
+        </div>
+        <button class = "profile__info_addbutton class-border"><img class = "profile__info_addbutton_image" src = "images/Vector.png" alt = "Кнопка добавить"></button>
+      </section>
+      <section class = "elements">
+        <div class = "element">
+          <img class = "element__image" src = "images/stockholm.jpg" alt = "Стокгольм">
+          <div class = "element__footer">
+            <h3 class = "element__paragraph">Стокгольм</h3>
+            <button class = "element__likebutton"></button>
+          </div>
+        </div>
+        <div class = "element">
+          <img class = "element__image" src = "images/oslo.jpg" alt = "Осло">
+          <div class = "element__footer">
+            <h3 class = "element__paragraph">Осло</h3>
+            <button class = "element__likebutton"></button>
+          </div>
+        </div>
+        <div class = "element">
+          <img class = "element__image" src = "images/kop.jpg" alt = "Копенгаген">
+          <div class = "element__footer">
+            <h3 class = "element__paragraph">Копенгаген</h3>
+            <button class = "element__likebutton"></button>
+          </div>
+        </div>
+        <div class = "element">
+          <img class = "element__image" src = "images/helsunger.jpg" alt = "Хельсингёр">
+          <div class = "element__footer">
+            <h3 class = "element__paragraph">Хельсингёр</h3>
+            <button class = "element__likebutton"></button>
+          </div>
+        </div>
+        <div class = "element">
+          <img class = "element__image" src = "images/olesunn.jpg" alt = "Олесунн">
+          <div class = "element__footer">
+            <h3 class = "element__paragraph">Олесунн</h3>
+            <button class = "element__likebutton"></button>
+          </div>
+        </div>
+        <div class = "element">
+          <img class = "element__image" src = "images/helsinborg.jpg" alt = "Хельсингборг">
+          <div class = "element__footer">
+            <h3 class = "element__paragraph">Хельсингборг</h3>
+            <button class = "element__likebutton"></button>
+          </div>
+      </section>
+    </main>
+    <footer class = "footer">
+      <p class = "footer__paragraph">&copy;2020 Mesto Russia</p>
+    </footern>
+    <section class = "popup"></section>
+    <div class = "popup__overlay">
+      <button class = "popup__closeButton"></button>
+      <section class = "popup__container">
+        <p class = "popup__editProfile">Редактировать профиль</p>
+        <fieldset class = "popup__input-container">
+          <input class = "popup__item popup__item_name" type = "text" id = "name" name = "name">
+          <div class = "popup__line"></div>
+          <input class = "popup__item popup__item_caption" type = "text" id = "caption" name = "caption">
+          <div class = "popup__line"></div>
+        </fieldset>
+        <button type="submit" class = "popup__submitButton">Сохранить</button>
+      </section>
+    </div>
+      
+  </div>
+  <script src = "script.js"></script>
+</body>
+</html>

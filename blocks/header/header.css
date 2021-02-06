@@ -1,0 +1,9 @@
+.header {
+    max-width: 880px;
+    margin: auto;
+}
+@media all and (min-width: 1280px) {
+    .header {
+        margin: 45px 200px 0 200px;
+    }
+}
