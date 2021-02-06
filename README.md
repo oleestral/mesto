@@ -11,4 +11,4 @@
 * @media
 * Адаптивная верстка
 
-**Сайт проекта**:
+**Сайт проекта**: https://oleestral.github.io/mesto/index.html
