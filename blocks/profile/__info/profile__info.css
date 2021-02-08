@@ -1,9 +1,8 @@
 .profile__info {
-    margin-left: 30px;
     margin-top: 22px;
     display: flex;
     justify-content: center;
-    margin-left: -230px;
+    margin-left: -220px;
 }
 @media all and (max-width: 767px) {
     .profile__info {
@@ -14,7 +13,6 @@
 @media all and (min-width: 768px) and (max-width: 899px){
     .profile__info {
         margin-top: 26px;
-        margin-left: 0;
-        margin-left: -150px;
+        margin-left: -160px;
     }
 }
