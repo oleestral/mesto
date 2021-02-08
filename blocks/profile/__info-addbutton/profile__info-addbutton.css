@@ -1,4 +1,4 @@
-.profile__info_addbutton {
+.profile__info-addbutton {
     padding: 0;
     margin: 35px 0 35px 0;
     width: 150px;
@@ -10,12 +10,12 @@
     right: 0;
     background-color: black;
 }
-.profile__info_addbutton:hover {
+.profile__info-addbutton:hover {
     opacity: 0.5;
     cursor: pointer;
 }
 @media all and (max-width: 767px) {
-    .profile__info_addbutton {
+    .profile__info-addbutton {
         position: relative;
         width: 100%;
         margin-top: 36px;

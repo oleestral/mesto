@@ -1,4 +1,4 @@
-.profile__info_selfdescription {
+.profile__info-selfdescription {
     padding: 0;
     font-style: normal;
     font-weight: normal;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 @media all and (max-width: 767px) {
-    .profile__info_selfdescription {
+    .profile__info-selfdescription {
         padding: 0;
         margin: 0;
         font-size: 14px;

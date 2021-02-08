@@ -15,12 +15,12 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
-@import url(../blocks/profile/__info/_items/profile__info_items.css);
-@import url(../blocks/profile/__info/_name/profile__info_name.css);
-@import url(../blocks/profile/__info/_selfdescription/profile__info_selfdescription.css);
-@import url(../blocks/profile/__info/_editbutton/profile__info_editbutton.css);
-@import url(../blocks/profile/__info/_addbutton/profile__info_addbutton.css);
-@import url(../blocks/profile/__info/_addbutton/_image/profile_info_addbutton_image.css);
+@import url(../blocks/profile/__info-items/profile__info-items.css);
+@import url(../blocks/profile/__info-name/profile__info-name.css);
+@import url(../blocks/profile/__info-selfdescription/profile__info-selfdescription.css);
+@import url(../blocks/profile/__info-editbutton/profile__info-editbutton.css);
+@import url(../blocks/profile/__info-addbutton/profile__info-addbutton.css);
+@import url(../blocks/profile/__info-addbutton/_image/profile__info-addbutton_image.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__overlay/popup__overlay.css);
