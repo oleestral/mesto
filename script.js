@@ -1,5 +1,5 @@
-let popup = document.querySelector('.popup');
-let editButton = document.querySelector('.profile__info_editbutton');
+let popups = document.querySelector('.popups');
+let editButton = document.querySelector('.profile__info-editbutton');
 let popupOverlay = document.querySelector('.popup__overlay');
 let closeButton = document.querySelector('.popup__closeButton');
 
@@ -7,14 +7,14 @@ let formElement = document.querySelector('.popup__input-container');
 let nameInput = document.querySelector('.popup__item_name')
 let captionInput = document.querySelector('.popup__item_caption')
 
-let nameProfile = document.querySelector('.profile__info_name');
-let jobProfile = document.querySelector('.profile__info_selfdescription');
+let nameProfile = document.querySelector('.profile__info-name');
+let jobProfile = document.querySelector('.profile__info-selfdescription');
 
 let submitButton = document.querySelector('.popup__submitButton');
 
 /*открытие окна редактирования*/
 function editProfile () {
-    popup.classList.add('popup_opened');
+    popups.classList.add('popup_opened');
     popupOverlay.classList.add('popup_opened');
     let name = nameProfile.textContent;
     let job = jobProfile.textContent;
@@ -26,7 +26,7 @@ editButton.addEventListener('click',editProfile);
 
 /*закрытие окна редактирования*/
 function closeEditProfile () {
-    popup.classList.remove('popup_opened');
+    popups.classList.remove('popup_opened');
     popupOverlay.classList.remove('popup_opened');
 }
 closeButton.addEventListener('click', closeEditProfile);

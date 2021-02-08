@@ -22,7 +22,7 @@
           </div>
           <button class = "profile__info-editbutton"></button>
         </div>
-        <button class = "profile__info-addbutton"><img class = "profile__info-addbutton_image" src = "images/Vector.png" alt = "Кнопка добавить"></button>
+        <button class = "profile__info-addbutton"><img class = "profile__info-addbutton-image" src = "images/Vector.png" alt = "Кнопка добавить"></button>
       </section>
       <section class = "elements">
         <div class = "element">
@@ -72,20 +72,20 @@
     <footer class = "footer">
       <p class = "footer__paragraph">&copy;2020 Mesto Russia</p>
     </footer>
-    <section class = "popup"></section>
-    <div class = "popup__overlay">
-      <button class = "popup__closeButton"></button>
-      <section class = "popup__container">
-        <p class = "popup__editProfile">Редактировать профиль</p>
-        <fieldset class = "popup__input-container">
-          <input class = "popup__item popup__item_name" type = "text" id = "name" name = "name">
-          <div class = "popup__line"></div>
-          <input class = "popup__item popup__item_caption" type = "text" id = "caption" name = "caption">
-          <div class = "popup__line"></div>
-        </fieldset>
-        <button type="submit" class = "popup__submitButton">Сохранить</button>
-      </section>
-    </div>
+    <section class = "popups"></section>
+      <div class = "popup__overlay">
+        <button class = "popup__closeButton"></button>
+        <section class = "popup__container">
+          <p class = "popup__editProfile">Редактировать профиль</p>
+          <fieldset class = "popup__input-container">
+            <input class = "popup__item popup__item_name" type = "text" id = "name" name = "name">
+            <div class = "popup__line"></div>
+            <input class = "popup__item popup__item_caption" type = "text" id = "caption" name = "caption">
+            <div class = "popup__line"></div>
+          </fieldset>
+          <button type="submit" class = "popup__submitButton">Сохранить</button>
+        </section>
+      </div>
       
   </div>
   <script src = "script.js"></script>

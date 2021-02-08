@@ -6,7 +6,7 @@
     box-sizing: border-box;
     margin-left: 18px;
     margin-top: 15px;
-    background-image: url(../../../../images/EditButton.png);
+    background-image: url(../../../images/EditButton.png);
     background-size: cover;
     background-position: center;
 }
