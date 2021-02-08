@@ -1,4 +1,4 @@
-.popup__overlay {
+.popup {
     display: none;
     position: absolute;
     height: 370px;
@@ -9,13 +9,13 @@
     
 }
 @media all and (max-width: 767px) {
-    .popup__overlay {
+    .popup {
         width: 282px;
         height: 348px;
     }
 }
 @media all and (max-width: 767px) {
-    .popup__overlay {
+    .popup {
         top: 80px;
         left: 50%;
         margin-left: -140px;
