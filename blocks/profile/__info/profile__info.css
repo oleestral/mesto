@@ -3,10 +3,18 @@
     margin-top: 22px;
     display: flex;
     justify-content: center;
+    margin-left: -230px;
 }
 @media all and (max-width: 767px) {
     .profile__info {
         margin-top: 26px;
         margin-left: 0;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 899px){
+    .profile__info {
+        margin-top: 26px;
+        margin-left: 0;
+        margin-left: -150px;
     }
 }

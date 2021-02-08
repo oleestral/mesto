@@ -5,6 +5,7 @@
     position: relative;
     margin: auto;
     margin-top: 40px;
+    justify-content: space-between;
 }
 @media all and (max-width: 767px) {
     .profile {

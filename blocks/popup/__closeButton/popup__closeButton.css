@@ -7,8 +7,8 @@
     border: none;
     background-color: #000000;
     outline: none;
-    position: absolute;
-    right: 0;
+    position: relative;
+    margin-left: 430px;
 }
 .popup__closeButton:hover {
     opacity: 0.5;
@@ -18,6 +18,6 @@
     .popup__closeButton {
         width: 26px;
         height: 26px;
-        top: 0;
+        margin-left: 260px;
     }
 }
