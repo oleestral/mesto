@@ -9,8 +9,7 @@
 <body class = "root">
   <div  class = "page">
     <header class = "header">
-      <img class = "header__logo" src= "images/logo.png" alt = "Место Россия">
-      <div class = "header__line"></div>
+      <img class = "header__logo" src= "images/logo.svg" alt = "Место Россия">
     </header>
     <main class = "content">
       <section class = "profile">
@@ -18,75 +17,74 @@
         <div class = "profile__info">
           <div class = "profile__info-items">
             <h1 class = "profile__info-name">Жак-Ив Кусто</h1>
-            <p class = "profile__info-selfdescription">Исследователь океана</p>
+            <p class = "profile__info-self-description">Исследователь океана</p>
           </div>
-          <button class = "profile__info-editbutton"></button>
+          <button type = "button" class = "profile__info-edit-button"></button>
         </div>
-        <button class = "profile__info-addbutton"><img class = "profile__info-addbutton-image" src = "images/Vector.png" alt = "Кнопка добавить"></button>
+        <button type = "button" class = "profile__info-add-button"><img class = "profile__info-add-button-image" src = "images/CloseIcon.svg" alt = "Кнопка добавить"></button>
       </section>
       <section class = "elements">
-        <div class = "element">
+        <article class = "element">
           <img class = "element__image" src = "images/stockholm.jpg" alt = "Стокгольм">
           <div class = "element__footer">
-            <h3 class = "element__paragraph">Стокгольм</h3>
-            <button class = "element__likebutton"></button>
+            <h2 class = "element__paragraph">Стокгольм</h2>
+            <button class = "element__like-button"></button>
           </div>
-        </div>
-        <div class = "element">
+        </article>
+        <article class = "element">
           <img class = "element__image" src = "images/oslo.jpg" alt = "Осло">
           <div class = "element__footer">
-            <h3 class = "element__paragraph">Осло</h3>
-            <button class = "element__likebutton"></button>
+            <h2 class = "element__paragraph">Осло</h2>
+            <button type = "button" class = "element__like-button"></button>
           </div>
-        </div>
-        <div class = "element">
+        </article>
+        <article class = "element">
           <img class = "element__image" src = "images/kop.jpg" alt = "Копенгаген">
           <div class = "element__footer">
-            <h3 class = "element__paragraph">Копенгаген</h3>
-            <button class = "element__likebutton"></button>
+            <h2 class = "element__paragraph">Копенгаген</h2>
+            <button type = "button" class = "element__like-button"></button>
           </div>
-        </div>
-        <div class = "element">
+        </article>
+        <article class = "element">
           <img class = "element__image" src = "images/helsunger.jpg" alt = "Хельсингёр">
           <div class = "element__footer">
-            <h3 class = "element__paragraph">Хельсингёр</h3>
-            <button class = "element__likebutton"></button>
+            <h2 class = "element__paragraph">Хельсингёр</h2>
+            <button type = "button" class = "element__like-button"></button>
           </div>
-        </div>
-        <div class = "element">
+        </article>
+        <article class = "element">
           <img class = "element__image" src = "images/olesunn.jpg" alt = "Олесунн">
           <div class = "element__footer">
-            <h3 class = "element__paragraph">Олесунн</h3>
-            <button class = "element__likebutton"></button>
+            <h2 class = "element__paragraph">Олесунн</h2>
+            <button type = "button" class = "element__like-button"></button>
           </div>
-        </div>
-        <div class = "element">
+        </article>
+        <article class = "element">
           <img class = "element__image" src = "images/helsinborg.jpg" alt = "Хельсингборг">
           <div class = "element__footer">
-            <h3 class = "element__paragraph">Хельсингборг</h3>
-            <button class = "element__likebutton"></button>
+            <h2 class = "element__paragraph">Хельсингборг</h2>
+            <button type = "button" class = "element__like-button"></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class = "footer">
       <p class = "footer__paragraph">&copy;2020 Mesto Russia</p>
     </footer>
-    <section class = "popups"></section>
-      <div class = "popup">
-        <button class = "popup__closeButton"></button>
-        <section class = "popup__container">
-          <p class = "popup__editProfile">Редактировать профиль</p>
-          <fieldset class = "popup__input-container">
-            <input class = "popup__item popup__item_name" type = "text" id = "name" name = "name">
-            <div class = "popup__line"></div>
-            <input class = "popup__item popup__item_caption" type = "text" id = "caption" name = "caption">
-            <div class = "popup__line"></div>
-          </fieldset>
-          <button type="submit" class = "popup__submitButton">Сохранить</button>
-        </section>
+
+    <section class = "popup">
+      <div class = "popup__containers">
+        <button type = "button" class = "popup__close-button"></button>
+        <div class = "popup__container">
+          <h3 class = "popup__edit-profile">Редактировать профиль</h3>
+          <form name = "input-container" class = "popup__input-container">
+            <input class = "popup__item popup__item_name popup_placeholders" type = "text" id = "name" name = "name" placeholder="Ваше имя">
+            <input class = "popup__item popup__item_caption popup_placeholders" type = "text" id = "caption" name = "caption" placeholder="О себе">
+            <button type="submit" class = "popup__submit-button">Сохранить</button>
+          </form>
+        </div>
       </div>
-      
+    </section>
   </div>
   <script src = "script.js"></script>
 </body>

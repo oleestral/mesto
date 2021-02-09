@@ -18,3 +18,9 @@
         margin: 40px 200px 0 200px;
     }
 }
+@media all and (max-width: 900px) {
+    .profile {
+        margin-left: 19px;
+        margin-right: 19px;
+    }
+}

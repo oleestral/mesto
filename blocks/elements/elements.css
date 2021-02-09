@@ -22,3 +22,9 @@
         margin: 51px 200px 0 200px;
     }
 }
+@media all and (max-width: 900px) {
+    .elements {
+        margin-left: 19px;
+        margin-right: 19px;
+    }
+}
