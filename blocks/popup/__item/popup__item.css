@@ -13,3 +13,6 @@
 .popup__item:focus {
     outline: none;
 }
+.popup__item::placeholder {
+  opacity: 0.5;
+}
