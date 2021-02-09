@@ -28,7 +28,7 @@
           <img class = "element__image" src = "images/stockholm.jpg" alt = "Стокгольм">
           <div class = "element__footer">
             <h2 class = "element__paragraph">Стокгольм</h2>
-            <button class = "element__like-button"></button>
+            <button type = "button" class = "element__like-button"></button>
           </div>
         </article>
         <article class = "element">
@@ -72,20 +72,18 @@
       <p class = "footer__paragraph">&copy;2020 Mesto Russia</p>
     </footer>
 
-    <section class = "popup">
-      <div class = "popup__containers">
-        <button type = "button" class = "popup__close-button"></button>
+    <div class = "popup">
         <div class = "popup__container">
-          <h3 class = "popup__edit-profile">Редактировать профиль</h3>
+          <button type = "button" class = "popup__close-button"></button>
+          <h2 class = "popup__edit-profile">Редактировать профиль</h2>
           <form name = "input-container" class = "popup__input-container">
-            <input class = "popup__item popup__item_name" type = "text" id = "name" name = "name" placeholder="Ваше имя">
-            <input class = "popup__item popup__item_caption" type = "text" id = "caption" name = "caption" placeholder="О себе">
+            <input class = "popup__item popup__item_type_name" type = "text" id = "name" name = "name" placeholder="Ваше имя">
+            <input class = "popup__item popup__item_type_caption" type = "text" id = "caption" name = "caption" placeholder="О себе">
             <button type="submit" class = "popup__submit-button">Сохранить</button>
           </form>
         </div>
-      </div>
-    </section>
+    </div>
   </div>
-  <script src = "script.js"></script>
+  <script src = "scripts/script.js"></script>
 </body>
 </html>

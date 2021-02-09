@@ -16,7 +16,7 @@
 }
 @media all and (max-width: 1023px) {
     .profile__info-edit-button {
-        width: 18px;
+        min-width: 18px;
         height: 18px;
         margin-left: 10px;
         margin-top: 8px;
