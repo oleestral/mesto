@@ -24,64 +24,51 @@
         <button type = "button" class = "profile__info-add-button"><img class = "profile__info-add-button-image" src = "images/CloseIcon.svg" alt = "Кнопка добавить"></button>
       </section>
       <section class = "elements">
-        <article class = "element">
-          <img class = "element__image" src = "images/stockholm.jpg" alt = "Стокгольм">
-          <div class = "element__footer">
-            <h2 class = "element__paragraph">Стокгольм</h2>
-            <button type = "button" class = "element__like-button"></button>
-          </div>
-        </article>
-        <article class = "element">
-          <img class = "element__image" src = "images/oslo.jpg" alt = "Осло">
-          <div class = "element__footer">
-            <h2 class = "element__paragraph">Осло</h2>
-            <button type = "button" class = "element__like-button"></button>
-          </div>
-        </article>
-        <article class = "element">
-          <img class = "element__image" src = "images/kop.jpg" alt = "Копенгаген">
-          <div class = "element__footer">
-            <h2 class = "element__paragraph">Копенгаген</h2>
-            <button type = "button" class = "element__like-button"></button>
-          </div>
-        </article>
-        <article class = "element">
-          <img class = "element__image" src = "images/helsunger.jpg" alt = "Хельсингёр">
-          <div class = "element__footer">
-            <h2 class = "element__paragraph">Хельсингёр</h2>
-            <button type = "button" class = "element__like-button"></button>
-          </div>
-        </article>
-        <article class = "element">
-          <img class = "element__image" src = "images/olesunn.jpg" alt = "Олесунн">
-          <div class = "element__footer">
-            <h2 class = "element__paragraph">Олесунн</h2>
-            <button type = "button" class = "element__like-button"></button>
-          </div>
-        </article>
-        <article class = "element">
-          <img class = "element__image" src = "images/helsinborg.jpg" alt = "Хельсингборг">
-          <div class = "element__footer">
-            <h2 class = "element__paragraph">Хельсингборг</h2>
-            <button type = "button" class = "element__like-button"></button>
-          </div>
-        </article>
+
       </section>
+      <template id = "elements-items">
+        <article class = "element" id = "element-container">
+          <img id = "element-image" class = "element__image" src = "" alt = "">
+          <div class = "element__footer">
+            <h2 class = "element__paragraph" id = "element-title"></h2>
+            <button type = "button" class = "element__like-button" id = "element-like"></button>
+          </div>
+          <button type = "button" class = "element__delete-button" onclick= "removeCard()"></button>
+        </article>
+      </template>
+      
     </main>
-    <footer class = "footer">
+    <footer class = footer>
       <p class = "footer__paragraph">&copy;2020 Mesto Russia</p>
     </footer>
-
     <div class = "popup">
         <div class = "popup__container">
           <button type = "button" class = "popup__close-button"></button>
           <h2 class = "popup__edit-profile">Редактировать профиль</h2>
           <form name = "input-container" class = "popup__input-container">
-            <input class = "popup__item popup__item_type_name" type = "text" id = "name" name = "name" placeholder="Ваше имя">
-            <input class = "popup__item popup__item_type_caption" type = "text" id = "caption" name = "caption" placeholder="О себе">
+            <input class = "popup__item popup__item_type_name" type = "text" id = "name" name = "name" placeholder="Ваше имя" autocomplete="off">
+            <input class = "popup__item popup__item_type_caption" type = "text" id = "caption" name = "caption" placeholder="О себе" autocomplete="off">
             <button type="submit" class = "popup__submit-button">Сохранить</button>
           </form>
         </div>
+    </div>
+    <div class = "popup popup-add">
+      <div class = "popup__container">
+        <button type = "button" class = "popup__close-button popup__close-button-add-container"></button>
+        <h2 class = "popup__edit-profile">Новое место</h2>
+        <form name = "input-container" class = "popup__input-container popup__input-add-container">
+          <input class = "popup__item popup__item_card_name" type = "text" id = "name" name = "name" placeholder="Название" autocomplete="off" required>
+          <input class = "popup__item popup__item_card_link" type = "text" id = "link" name = "link" placeholder="Cсылка на картинку" autocomplete="off" required>
+          <button type="submit" class = "popup__submit-button popup__submit-button-add-container">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class = "popup-open">
+      <div class = "popup-open__container">
+        <button type = "button" class = "popup__close-button popup-open__close-button"></button>
+        <img class = "popup-open__image" src = "" alt = "" id = "opened-image">
+        <h3 class = "popup-open__title" id = "popup-open-title"></h3>
+      </div>
     </div>
   </div>
   <script src = "scripts/script.js"></script>

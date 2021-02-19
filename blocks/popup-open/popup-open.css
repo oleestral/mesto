@@ -1,4 +1,4 @@
-.popup {
+.popup-open {
     display: none;
     position: fixed;
     top: 0;
@@ -6,14 +6,14 @@
     right: 0;
     bottom: 0;
     background-color: #000000;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.9);
 }
-.popup > .popup__container {
+.popup-open > .popup-open__container {
     visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
 }
-.popup:hover > .popup__container {
+.popup-open:hover > .popup-open__container {
     visibility: visible;
   opacity: 1;
 }

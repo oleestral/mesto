@@ -6,6 +6,7 @@
     margin: auto;
     margin-top: 51px;
     grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
 }
 @media all and (max-width: 767px) {
     .elements {
