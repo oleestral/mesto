@@ -28,7 +28,7 @@
       </section>
       <template id = "elements-items">
         <article class = "element" id = "element-container">
-          <img id = "element-image" class = "element__image" src = "" alt = "">
+          <img id = "element-image" class = "element__image" src = "#" alt = "">
           <div class = "element__footer">
             <h2 class = "element__paragraph" id = "element-title"></h2>
             <button type = "button" class = "element__like-button" id = "element-like"></button>
@@ -46,7 +46,7 @@
           <button type = "button" class = "popup__close-button"></button>
           <h2 class = "popup__edit-profile">Редактировать профиль</h2>
           <form name = "input-container" class = "popup__input-container">
-            <input class = "popup__item popup__item_type_name" type = "text" id = "name" name = "name" placeholder="Ваше имя" autocomplete="off">
+            <input class = "popup__item popup__item_type_name" type = "text" id = "popup-name" name = "name" placeholder="Ваше имя" autocomplete="off">
             <input class = "popup__item popup__item_type_caption" type = "text" id = "caption" name = "caption" placeholder="О себе" autocomplete="off">
             <button type="submit" class = "popup__submit-button">Сохранить</button>
           </form>
@@ -57,7 +57,7 @@
         <button type = "button" class = "popup__close-button popup__close-button-add-container"></button>
         <h2 class = "popup__edit-profile">Новое место</h2>
         <form name = "input-container" class = "popup__input-container popup__input-add-container">
-          <input class = "popup__item popup__item_card_name" type = "text" id = "name" name = "name" placeholder="Название" autocomplete="off" required>
+          <input class = "popup__item popup__item_card_name" type = "text" id = "popup-add-name" name = "name" placeholder="Название" autocomplete="off" required>
           <input class = "popup__item popup__item_card_link" type = "text" id = "link" name = "link" placeholder="Cсылка на картинку" autocomplete="off" required>
           <button type="submit" class = "popup__submit-button popup__submit-button-add-container">Сохранить</button>
         </form>
@@ -66,7 +66,7 @@
     <div class = "popup-open">
       <div class = "popup-open__container">
         <button type = "button" class = "popup__close-button popup-open__close-button"></button>
-        <img class = "popup-open__image" src = "" alt = "" id = "opened-image">
+        <img class = "popup-open__image" src = "#" alt = "" id = "opened-image">
         <h3 class = "popup-open__title" id = "popup-open-title"></h3>
       </div>
     </div>
