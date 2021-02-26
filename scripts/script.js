@@ -3,7 +3,7 @@ const popupEdit = document.querySelector('.popup-edit');
 const popupAdd = document.querySelector('.popup-add');
 const popupOpen = document.querySelector('.popup-open');
 const closeButton = document.querySelector('.popup__close-button');
-let formElement = document.querySelector('.popup__input-container');
+const formElement = document.querySelector('.popup__input-container');
 let nameInput = document.querySelector('.popup__item_type_name');
 let captionInput = document.querySelector('.popup__item_type_caption');
 const closeButtonAdd = document.querySelector('.popup__close-button-add-container');
@@ -15,24 +15,25 @@ const popupTitle = document.querySelector('.popup-open__title');
 const closeButtonOpen = document.querySelector('.popup-open__close-button');
 
 /*profile*/
-let editButton = document.querySelector('.profile__info-edit-button');
+const editButton = document.querySelector('.profile__info-edit-button');
 let nameProfile = document.querySelector('.profile__info-name');
 let jobProfile = document.querySelector('.profile__info-self-description');
-let addButton = document.querySelector('.profile__info-add-button');
+const addButton = document.querySelector('.profile__info-add-button');
 
 /*element*/
-let elementsContainer = document.querySelector('.elements'); /*целый контейнер*/
+const elementsContainer = document.querySelector('.elements'); /*целый контейнер*/
 const cardName = document.querySelector('.element__paragraph');
-const cardImage = document.querySelector('.element__image');
 const elementTemplate = document.querySelector("#elements-items").content; /*темплейт*/
 
 /********************************************************************************************ФУНКЦИИ**************************************/
+const template = elementTemplate.querySelector(".element");
 
 //открытие окон с затемнением
 function openPopup (popup) {
     popup.classList.add('popup_opened');
-    showNamePrifile ();
+    
 }
+
 //закрытие окон с затемнением
 function closePopup(popup) {
     popup.classList.remove('popup_opened'); //окно редактирования профиля
@@ -48,7 +49,7 @@ function formSubmitHandler(evt) {
     evt.preventDefault();
     nameProfile.textContent = nameInput.value;
     jobProfile.textContent = captionInput.value;
-    closePopup()
+    closePopup(popupEdit)
 }
 //лайкаем
 function addLike(evt) {
@@ -60,18 +61,21 @@ function deleteCard(evt) {
 }
 //создаем скелет 6 изначальных карточек
 function createCard(link, name) {
-    let element = elementTemplate.querySelector(".element").cloneNode(true); /*скопировали внутренности темплейта*/
-    element.querySelector('.element__image').src = link;
-    element.querySelector('.element__image').alt = name;
-    element.querySelector('.element__paragraph').textContent = name;
+    let element = template.cloneNode(true); /*скопировали внутренности темплейта*/
+    let elementImage = element.querySelector('.element__image');
+    elementImage.src = link;
+    elementImage.alt = name;
+    let elementParagraph = element.querySelector('.element__paragraph');
+    elementParagraph.textContent = name;
     element.querySelector('.element__like-button').addEventListener('click',addLike);
     element.querySelector('.element__delete-button').addEventListener('click',deleteCard);
     //смотрим картинки ближе
-    const pic = element.querySelector('.element__image'); 
+    const pic = elementImage; 
     pic.addEventListener('click', function(evt) { 
+        popupTitle.textContent = elementParagraph.textContent; 
+        popupImage.src = elementImage.src;
+        popupImage.alt = elementParagraph.textContent;
         openPopup(popupOpen);
-        popupTitle.textContent = element.querySelector('.element__paragraph').textContent; 
-        popupImage.src = element.querySelector('.element__image').src; 
      }) 
     return element;
 }
@@ -85,7 +89,7 @@ function addCard(evt) {
     evt.preventDefault();
     const newAddCard = createCard(cardLinkInput.value,cardNameInput.value);
     elementsContainer.prepend(newAddCard);
-    closePopupAdd()
+    closePopup(popupAdd)
 }
 ////////////////////////////////////////////////////////////////////////ВЫЗОВ ФУНКЦИЙ///////////////////////////////
 //вызов функции закрытия окон
@@ -96,5 +100,5 @@ closeButtonOpen.addEventListener('click',() => closePopup(popupOpen));
 formElement.addEventListener('submit', formSubmitHandler);
 formAElementAdd.addEventListener('submit',addCard);
 
-editButton.addEventListener('click',() => openPopup(popupEdit));
+editButton.addEventListener('click',() => openPopup(popupEdit),showNamePrifile());
 addButton.addEventListener('click',() => openPopup(popupAdd));
