@@ -13,7 +13,7 @@ const cardLinkInput = document.querySelector('.popup__item_card_link');
 const popupImage = document.querySelector('.popup-open__image');
 const popupTitle = document.querySelector('.popup-open__title');
 const closeButtonOpen = document.querySelector('.popup-open__close-button');
-
+const popupOrigin = document.querySelectorAll('.popup');
 /*profile*/
 const editButton = document.querySelector('.profile__info-edit-button');
 const nameProfile = document.querySelector('.profile__info-name');
@@ -31,9 +31,22 @@ const resetAddContainer =  document.getElementById('input-container-add'); //п�
 //открытие окон с затемнением
 function openPopup (popup) {
     popup.classList.add('popup_opened');
-    
 }
-
+//закрытие окон по клавише Esc
+function closePopupEsc(evt) {
+    if (evt.key === "Escape") {
+    const popupActive = document.querySelector('.popup_opened');
+    closePopup(popupActive);
+    }
+}
+//закрытие окон по клику на фон
+popupOrigin.forEach(function(item) {
+    item.addEventListener('mousedown', function(evt){
+        if (evt.target.classList.contains('popup_opened')) {
+            evt.target.classList.toggle('popup_opened');
+        }
+    })
+})
 //закрытие окон с затемнением
 function closePopup(popup) {
     popup.classList.remove('popup_opened'); //окно редактирования профиля
@@ -100,6 +113,8 @@ closeButtonOpen.addEventListener('click',() => closePopup(popupOpen));
 //сохрание ручного изменения имени
 formElement.addEventListener('submit', formSubmitHandler);
 formAElementAdd.addEventListener('submit',addCard);
+
+document.addEventListener('keydown', closePopupEsc)// закрытие по Esc
 
 editButton.addEventListener('click',() => {
     openPopup(popupEdit);
