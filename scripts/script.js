@@ -27,7 +27,7 @@ const elementTemplate = document.querySelector("#elements-items").content; /*т�
 
 /********************************************************************************************ФУНКЦИИ**************************************/
 const template = elementTemplate.querySelector(".element");
-
+const resetAddContainer =  document.getElementById('input-container-add'); //переменная для сброса формы добавления карточки
 //открытие окон с затемнением
 function openPopup (popup) {
     popup.classList.add('popup_opened');
@@ -90,7 +90,7 @@ function addCard(evt) {
     const newAddCard = createCard(cardLinkInput.value,cardNameInput.value);
     elementsContainer.prepend(newAddCard);
     closePopup(popupAdd);
-    document.getElementById('input-container-add').reset();
+    resetAddContainer.reset();
 }
 ////////////////////////////////////////////////////////////////////////ВЫЗОВ ФУНКЦИЙ///////////////////////////////
 //вызов функции закрытия окон
