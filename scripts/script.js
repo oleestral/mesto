@@ -4,8 +4,8 @@ const popupAdd = document.querySelector('.popup-add');
 const popupOpen = document.querySelector('.popup-open');
 const closeButton = document.querySelector('.popup__close-button');
 const formElement = document.querySelector('.popup__input-container');
-let nameInput = document.querySelector('.popup__item_type_name');
-let captionInput = document.querySelector('.popup__item_type_caption');
+const nameInput = document.querySelector('.popup__item_type_name');
+const captionInput = document.querySelector('.popup__item_type_caption');
 const closeButtonAdd = document.querySelector('.popup__close-button-add-container');
 const formAElementAdd = document.querySelector('.popup__input-add-container');
 const cardNameInput = document.querySelector('.popup__item_card_name');
@@ -16,8 +16,8 @@ const closeButtonOpen = document.querySelector('.popup-open__close-button');
 
 /*profile*/
 const editButton = document.querySelector('.profile__info-edit-button');
-let nameProfile = document.querySelector('.profile__info-name');
-let jobProfile = document.querySelector('.profile__info-self-description');
+const nameProfile = document.querySelector('.profile__info-name');
+const jobProfile = document.querySelector('.profile__info-self-description');
 const addButton = document.querySelector('.profile__info-add-button');
 
 /*element*/
@@ -61,11 +61,11 @@ function deleteCard(evt) {
 }
 //создаем скелет 6 изначальных карточек
 function createCard(link, name) {
-    let element = template.cloneNode(true); /*скопировали внутренности темплейта*/
-    let elementImage = element.querySelector('.element__image');
+    const element = template.cloneNode(true); /*скопировали внутренности темплейта*/
+    const elementImage = element.querySelector('.element__image');
     elementImage.src = link;
     elementImage.alt = name;
-    let elementParagraph = element.querySelector('.element__paragraph');
+    const elementParagraph = element.querySelector('.element__paragraph');
     elementParagraph.textContent = name;
     element.querySelector('.element__like-button').addEventListener('click',addLike);
     element.querySelector('.element__delete-button').addEventListener('click',deleteCard);
@@ -89,7 +89,8 @@ function addCard(evt) {
     evt.preventDefault();
     const newAddCard = createCard(cardLinkInput.value,cardNameInput.value);
     elementsContainer.prepend(newAddCard);
-    closePopup(popupAdd)
+    closePopup(popupAdd);
+    document.getElementById('input-container-add').reset();
 }
 ////////////////////////////////////////////////////////////////////////ВЫЗОВ ФУНКЦИЙ///////////////////////////////
 //вызов функции закрытия окон
@@ -100,5 +101,8 @@ closeButtonOpen.addEventListener('click',() => closePopup(popupOpen));
 formElement.addEventListener('submit', formSubmitHandler);
 formAElementAdd.addEventListener('submit',addCard);
 
-editButton.addEventListener('click',() => openPopup(popupEdit),showNamePrifile());
+editButton.addEventListener('click',() => {
+    openPopup(popupEdit);
+    showNamePrifile();
+});
 addButton.addEventListener('click',() => openPopup(popupAdd));
