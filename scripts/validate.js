@@ -2,7 +2,7 @@ const selectors = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__button_disabled',
+  inactiveButtonClass: 'popup__button-disabled',
   inputErrorClass: 'popup__input-type-error',
   errorClass: 'popup__error_visible',
   setSelector: '.popup__set',
