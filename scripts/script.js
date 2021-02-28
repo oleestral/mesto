@@ -14,6 +14,8 @@ const popupImage = document.querySelector('.popup-open__image');
 const popupTitle = document.querySelector('.popup-open__title');
 const closeButtonOpen = document.querySelector('.popup-open__close-button');
 const popupOrigin = document.querySelectorAll('.popup');
+const popupSubmitButton = document.querySelector('.popup__submit-button');
+const popupCLose = document.querySelectorAll('.popup-close')
 /*profile*/
 const editButton = document.querySelector('.profile__info-edit-button');
 const nameProfile = document.querySelector('.profile__info-name');
@@ -21,35 +23,45 @@ const jobProfile = document.querySelector('.profile__info-self-description');
 const addButton = document.querySelector('.profile__info-add-button');
 
 /*element*/
-const elementsContainer = document.querySelector('.elements'); /*целый контейнер*/
+/*целый контейнер*/
+const elementsContainer = document.querySelector('.elements');
 const cardName = document.querySelector('.element__paragraph');
-const elementTemplate = document.querySelector("#elements-items").content; /*темплейт*/
+/*темплейт*/
+const elementTemplate = document.querySelector("#elements-items").content;
 
 /********************************************************************************************ФУНКЦИИ**************************************/
 const template = elementTemplate.querySelector(".element");
-const resetAddContainer =  document.getElementById('input-container-add'); //переменная для сброса формы добавления карточки
+
+//переменная для сброса формы добавления карточки
+const resetAddContainer =  document.getElementById('input-container-add');
+
 //открытие окон с затемнением
 function openPopup (popup) {
     popup.classList.add('popup_opened');
+    // закрытие по Esc
+    document.addEventListener('keydown', closePopupEsc)
 }
 //закрытие окон по клавише Esc
 function closePopupEsc(evt) {
     if (evt.key === "Escape") {
     const popupActive = document.querySelector('.popup_opened');
-    closePopup(popupActive);
     }
 }
 //закрытие окон по клику на фон
 popupOrigin.forEach(function(item) {
     item.addEventListener('mousedown', function(evt){
         if (evt.target.classList.contains('popup_opened')) {
-            evt.target.classList.toggle('popup_opened');
+            popupCLose.forEach((item) => {
+                closePopup(item);
+            })
         }
     })
 })
 //закрытие окон с затемнением
 function closePopup(popup) {
-    popup.classList.remove('popup_opened'); //окно редактирования профиля
+    popup.classList.remove('popup_opened');
+    // закрытие по Esc
+    document.removeEventListener('keydown', closePopupEsc)
 }
 
 //отображение теукщего имени профиля
@@ -103,7 +115,10 @@ function addCard(evt) {
     const newAddCard = createCard(cardLinkInput.value,cardNameInput.value);
     elementsContainer.prepend(newAddCard);
     closePopup(popupAdd);
+    //popupSubmitButton.classList.add();
+    //popupSubmitButton.classList.add(formConfig.inactiveButtonClass);
     resetAddContainer.reset();
+    
 }
 ////////////////////////////////////////////////////////////////////////ВЫЗОВ ФУНКЦИЙ///////////////////////////////
 //вызов функции закрытия окон
@@ -113,8 +128,6 @@ closeButtonOpen.addEventListener('click',() => closePopup(popupOpen));
 //сохрание ручного изменения имени
 formElement.addEventListener('submit', formSubmitHandler);
 formAElementAdd.addEventListener('submit',addCard);
-
-document.addEventListener('keydown', closePopupEsc)// закрытие по Esc
 
 editButton.addEventListener('click',() => {
     openPopup(popupEdit);

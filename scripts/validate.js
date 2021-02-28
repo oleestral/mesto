@@ -5,7 +5,8 @@ const selectors = {
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input-type-error',
   errorClass: 'popup__error_visible',
-  setSelector: '.popup__set'
+  setSelector: '.popup__set',
+  buttonSelector: '.button'
 }
 //если данные ввели некорректно, возникает ошибка
 const showError = (formElementNew, inputElement, errorMessage, selectors) => {
@@ -21,42 +22,40 @@ const hideError = (formElementNew,inputElement) => {
   errorElement.classList.remove(selectors.errorClass);
   errorElement.textContent = "";
 };
+
+
 //проверка введенных данных, вызов функций showError и hideError
 const checkInputValidity = (formElementNew,inputElement, selectors) => {
   if (!inputElement.validity.valid) {
     showError(formElementNew, inputElement, inputElement.validationMessage, selectors);
   } else {
     hideError(formElementNew, inputElement, selectors);
-  } 
+  }
 };
+
 
 function setEventListeners(formElementNew, selectors) {
   const inputList = Array.from(formElementNew.querySelectorAll(selectors.inputSelector));
   const buttonElement = formElementNew.querySelector(selectors.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, selectors);
   inputList.forEach((inputElement) => {
   inputElement.addEventListener('input', function () {
     checkInputValidity(formElementNew, inputElement, selectors);
     toggleButtonState(inputList, buttonElement, selectors);
   });
 });
-}
+};
+
+
 //валадицая филдсетов
 const enableValidation = (selectors) => {
   const formList = Array.from(document.querySelectorAll(selectors.formSelector));
   formList.forEach((formElementNew) => {
     formElementNew.addEventListener('submit', function (evt) {
       evt.preventDefault();
-
     });
-    const fieldsetList = Array.from(formElementNew.querySelectorAll(selectors.setSelector));
-
-fieldsetList.forEach((fieldSet) => {
-  setEventListeners(fieldSet, selectors);
-}); 
+    setEventListeners(formElementNew, selectors);
   });
 }
-
 // Есть ли здесь хотя бы одно поле, которое не прошло валидацию?
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
@@ -67,10 +66,10 @@ function hasInvalidInput(inputList) {
 //если данные ввели некорректно, кнопка становится серой и наоборот
 function toggleButtonState(inputList,buttonElement, selectors) {
   if (hasInvalidInput(inputList)) {
-  buttonElement.disabled = true;
+  buttonElement.setAttribute('disabled', true);
   buttonElement.classList.add(selectors.inactiveButtonClass);
 } else {
-  buttonElement.disabled = false;
+  buttonElement.removeAttribute('disabled');
   buttonElement.classList.remove(selectors.inactiveButtonClass);
 }
 }
