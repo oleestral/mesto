@@ -14,7 +14,7 @@ const popupImage = document.querySelector('.popup-open__image');
 const popupTitle = document.querySelector('.popup-open__title');
 const closeButtonOpen = document.querySelector('.popup-open__close-button');
 const popupOrigin = document.querySelectorAll('.popup');
-const popupSubmitButton = document.querySelector('.popup__submit-button');
+const popupSubmitButton = document.querySelector('.popup__submit-button-add-container');
 const popupCLose = document.querySelectorAll('.popup-close')
 /*profile*/
 const editButton = document.querySelector('.profile__info-edit-button');
@@ -45,11 +45,12 @@ function openPopup (popup) {
 function closePopupEsc(evt) {
     if (evt.key === "Escape") {
     const popupActive = document.querySelector('.popup_opened');
+    closePopup(popupActive)
     }
 }
 //закрытие окон по клику на фон
 popupOrigin.forEach(function(item) {
-    item.addEventListener('mousedown', function(evt){
+    item.addEventListener('mousedown', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
             popupCLose.forEach((item) => {
                 closePopup(item);
@@ -96,12 +97,12 @@ function createCard(link, name) {
     element.querySelector('.element__delete-button').addEventListener('click',deleteCard);
     //смотрим картинки ближе
     const pic = elementImage; 
-    pic.addEventListener('click', function(evt) { 
-        popupTitle.textContent = elementParagraph.textContent; 
-        popupImage.src = elementImage.src;
-        popupImage.alt = elementParagraph.textContent;
-        openPopup(popupOpen);
-     }) 
+    pic.addEventListener('click',() => {
+        popupTitle.textContent = elementParagraph.textContent;
+      popupImage.src = elementImage.src;
+      popupImage.alt = elementParagraph.textContent;
+      openPopup(popupOpen);
+      })
     return element;
 }
 //показываем скелет 6 изначальных карточек
@@ -115,10 +116,9 @@ function addCard(evt) {
     const newAddCard = createCard(cardLinkInput.value,cardNameInput.value);
     elementsContainer.prepend(newAddCard);
     closePopup(popupAdd);
-    //popupSubmitButton.classList.add();
-    //popupSubmitButton.classList.add(formConfig.inactiveButtonClass);
     resetAddContainer.reset();
-    
+    popupSubmitButton.classList.add(selectors.inactiveButtonClass);
+    popupSubmitButton.setAttribute('disabled', true)
 }
 ////////////////////////////////////////////////////////////////////////ВЫЗОВ ФУНКЦИЙ///////////////////////////////
 //вызов функции закрытия окон
