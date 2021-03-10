@@ -9,84 +9,87 @@
 <body class = "root">
   <div  class = "page">
     <header class = "header">
-      <img class = "header__logo" src= "images/logo.png" alt = "Место Россия">
-      <div class = "header__line"></div>
+      <img class = "header__logo" src= "images/logo.svg" alt = "Место Россия">
     </header>
     <main class = "content">
       <section class = "profile">
         <img class = "profile__avatar" src = "images/image.png" alt = "Фотография профиля">
         <div class = "profile__info">
-          <div class = "profile__info_items">
-            <h1 class = "profile__info_name">Жак-Ив Кусто</h1>
-            <p class = "profile__info_selfdescription">Исследователь океана</p>
+          <div class = "profile__info-items">
+            <h1 class = "profile__info-name">Жак-Ив Кусто</h1>
+            <p class = "profile__info-self-description">Исследователь океана</p>
           </div>
-          <button class = "profile__info_editbutton"></button>
+          <button type = "button" class = "profile__info-edit-button button"></button>
         </div>
-        <button class = "profile__info_addbutton class-border"><img class = "profile__info_addbutton_image" src = "images/Vector.png" alt = "Кнопка добавить"></button>
+        <button type = "button" class = "profile__info-add-button button"><img class = "profile__info-add-button-image" src = "images/CloseIcon.svg" alt = "Кнопка добавить"></button>
       </section>
       <section class = "elements">
-        <div class = "element">
-          <img class = "element__image" src = "images/stockholm.jpg" alt = "Стокгольм">
-          <div class = "element__footer">
-            <h3 class = "element__paragraph">Стокгольм</h3>
-            <button class = "element__likebutton"></button>
-          </div>
-        </div>
-        <div class = "element">
-          <img class = "element__image" src = "images/oslo.jpg" alt = "Осло">
-          <div class = "element__footer">
-            <h3 class = "element__paragraph">Осло</h3>
-            <button class = "element__likebutton"></button>
-          </div>
-        </div>
-        <div class = "element">
-          <img class = "element__image" src = "images/kop.jpg" alt = "Копенгаген">
-          <div class = "element__footer">
-            <h3 class = "element__paragraph">Копенгаген</h3>
-            <button class = "element__likebutton"></button>
-          </div>
-        </div>
-        <div class = "element">
-          <img class = "element__image" src = "images/helsunger.jpg" alt = "Хельсингёр">
-          <div class = "element__footer">
-            <h3 class = "element__paragraph">Хельсингёр</h3>
-            <button class = "element__likebutton"></button>
-          </div>
-        </div>
-        <div class = "element">
-          <img class = "element__image" src = "images/olesunn.jpg" alt = "Олесунн">
-          <div class = "element__footer">
-            <h3 class = "element__paragraph">Олесунн</h3>
-            <button class = "element__likebutton"></button>
-          </div>
-        </div>
-        <div class = "element">
-          <img class = "element__image" src = "images/helsinborg.jpg" alt = "Хельсингборг">
-          <div class = "element__footer">
-            <h3 class = "element__paragraph">Хельсингборг</h3>
-            <button class = "element__likebutton"></button>
-          </div>
+ 
       </section>
-    </main>
-    <footer class = "footer">
-      <p class = "footer__paragraph">&copy;2020 Mesto Russia</p>
-    </footern>
-    <section class = "popup"></section>
-    <div class = "popup__overlay">
-      <button class = "popup__closeButton"></button>
-      <section class = "popup__container">
-        <p class = "popup__editProfile">Редактировать профиль</p>
-        <fieldset class = "popup__input-container">
-          <input class = "popup__item popup__item_name" type = "text" id = "name" name = "name">
-          <div class = "popup__line"></div>
-          <input class = "popup__item popup__item_caption" type = "text" id = "caption" name = "caption">
-          <div class = "popup__line"></div>
-        </fieldset>
-        <button type="submit" class = "popup__submitButton">Сохранить</button>
-      </section>
-    </div>
+      <template id = "elements-items">
+        <article class = "element" id = "element-container">
+          <img id = "element-image" class = "element__image" src = "#" alt = "#">
+          <div class = "element__footer">
+            <h2 class = "element__paragraph" id = "element-title"></h2>
+            <button type = "button" class = "element__like-button" id = "element-like"></button>
+          </div>
+          <button type = "button" class = "element__delete-button"></button>
+        </article>
+      </template>
       
+    </main>
+    <footer class = footer>
+      <p class = "footer__paragraph">&copy;2021 Mesto Russia</p>
+    </footer>
+    <div class = "popup popup-edit popup-close">
+        <div class = "popup__container">
+          <button type = "button" class = "popup__close-button"></button>
+          <h2 class = "popup__edit-profile">Редактировать профиль</h2>
+          <form  name = "input-container" class = "popup__form popup__input-container" novalidate>
+            <fieldset class = "popup__set">
+              <div class = "popup__section">
+                <input class = "popup__input popup__item popup__item_type_name" type = "text" id = "name-profile" name = "name-profile" placeholder="Ваше имя" autocomplete="off" minlength = "2" maxlength = "40" required>
+              <span class = "popup__input-type-error name-profile-error"></span>
+              </div>
+              <div class = "popup__section">
+                <input class = "popup__input popup__item popup__item_type_caption" type = "text" id = "caption" name = "caption" placeholder="О себе" autocomplete="off" minlength = "2" maxlength = "200" required>
+              <span class = "popup__input-type-error caption-error"></span>
+              </div>
+              
+              <button type="submit" class = "popup__submit popup__submit-button">Сохранить</button>
+            </fieldset>
+          </form>
+        </div>
+    </div>
+    <div class = "popup popup-add popup-close">
+      <div class = "popup__container">
+        <button type = "button" class = "popup__close-button popup__close-button-add-container"></button>
+        <h2 class = "popup__edit-profile">Новое место</h2>
+        <form name = "input-container" class = "popup__form popup__input-container popup__input-add-container" id = "input-container-add" novalidate>
+          <fieldset class = "popup__set">
+            <div class = "popup__section">
+              <input class = "popup__input popup__item popup__item_card_name" type = "text" id = "name-place" name = "name-place" placeholder="Название" autocomplete="off" minlength = "2" maxlength = "30" required>
+            <span class = "popup__input-type-error name-place-error"></span>
+            </div>
+            <div class = "popup__section">
+              <input class = "popup__input popup__item popup__item_card_link" type = "url" id = "link" name = "link" placeholder="Cсылка на картинку" autocomplete="off" required>
+            <span class = "popup__input-type-error link-error"></span>
+            </div>
+            <button type="submit" class = "popup__submit popup__submit-button popup__submit-button-add-container popup__button-disabled" disabled>Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class = "popup popup-open popup-close">
+      <div class = "popup-open__container">
+        <button type = "button" class = "popup__close-button popup-open__close-button"></button>
+        <img class = "popup-open__image" src = "#" alt = "#" id = "opened-image">
+        <h3 class = "popup-open__title" id = "popup-open-title"></h3>
+      </div>
+    </div>
   </div>
-  <script src = "script.js"></script>
+  <script src = "scripts/initial-сards.js"></script>
+  <script src = "scripts/script.js"></script>
+  <script src = "scripts/validate.js"></script>
 </body>
 </html>

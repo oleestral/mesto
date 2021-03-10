@@ -1,4 +1,4 @@
-# Проект 4: Место
+# Проект 6: Место
 
 ### Интро
 
@@ -11,4 +11,4 @@
 * @media
 * Адаптивная верстка
 
-**Сайт проекта**:https://oleestral.github.io/mesto/index.html
+**Сайт проекта**: https://oleestral.github.io/mesto/index.html

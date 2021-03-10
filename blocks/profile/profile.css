@@ -5,6 +5,7 @@
     position: relative;
     margin: auto;
     margin-top: 40px;
+    justify-content: space-between;
 }
 @media all and (max-width: 767px) {
     .profile {
@@ -15,5 +16,11 @@
 @media all and (min-width: 1280px) {
     .profile {
         margin: 40px 200px 0 200px;
+    }
+}
+@media all and (max-width: 900px) {
+    .profile {
+        margin-left: 19px;
+        margin-right: 19px;
     }
 }
