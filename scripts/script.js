@@ -1,3 +1,7 @@
+import {Card} from './Card.js';
+import {FormValidator, selectorsItem} from './FormValidator.js'
+import {initialCards} from './initial-сards.js'
+
 /*popup*/
 const popupEdit = document.querySelector('.popup-edit');
 const popupAdd = document.querySelector('.popup-add');
@@ -10,8 +14,6 @@ const closeButtonAdd = document.querySelector('.popup__close-button-add-containe
 const formAElementAdd = document.querySelector('.popup__input-add-container');
 const cardNameInput = document.querySelector('.popup__item_card_name');
 const cardLinkInput = document.querySelector('.popup__item_card_link');
-const popupImage = document.querySelector('.popup-open__image');
-const popupTitle = document.querySelector('.popup-open__title');
 const closeButtonOpen = document.querySelector('.popup-open__close-button');
 const popupOrigin = document.querySelectorAll('.popup');
 const popupSubmitButton = document.querySelector('.popup__submit-button-add-container');
@@ -25,18 +27,14 @@ const addButton = document.querySelector('.profile__info-add-button');
 /*element*/
 /*целый контейнер*/
 const elementsContainer = document.querySelector('.elements');
-const cardName = document.querySelector('.element__paragraph');
-/*темплейт*/
-const elementTemplate = document.querySelector("#elements-items").content;
 
 /********************************************************************************************ФУНКЦИИ**************************************/
-const template = elementTemplate.querySelector(".element");
 
 //переменная для сброса формы добавления карточки
 const resetAddContainer =  document.getElementById('input-container-add');
 
 //открытие окон с затемнением
-function openPopup (popup) {
+export function openPopup (popup) {
     popup.classList.add('popup_opened');
     // закрытие по Esc
     document.addEventListener('keydown', closePopupEsc)
@@ -67,8 +65,8 @@ function closePopup(popup) {
 
 //отображение теукщего имени профиля
 function showNamePrifile () {
-    nameInput.value = nameProfile.textContent;
     captionInput.value = jobProfile.textContent;
+    nameInput.value = nameProfile.textContent;
 }
 /*запись изменения имени профиля*/
 function formSubmitHandler(evt) {
@@ -77,49 +75,33 @@ function formSubmitHandler(evt) {
     jobProfile.textContent = captionInput.value;
     closePopup(popupEdit)
 }
-//лайкаем
-function addLike(evt) {
-    evt.target.classList.toggle('element__like-button_active');
+function addCard(array) {
+    array.forEach((card) => {
+        const item = new Card(card);
+        const CardElement = item.generateCard();
+        elementsContainer.prepend(CardElement);
+    })
 }
-//удаляем пост
-function deleteCard(evt) {
-    evt.target.closest('.element').remove();
-}
-//создаем скелет 6 изначальных карточек
-function createCard(link, name) {
-    const element = template.cloneNode(true); /*скопировали внутренности темплейта*/
-    const elementImage = element.querySelector('.element__image');
-    elementImage.src = link;
-    elementImage.alt = name;
-    const elementParagraph = element.querySelector('.element__paragraph');
-    elementParagraph.textContent = name;
-    element.querySelector('.element__like-button').addEventListener('click',addLike);
-    element.querySelector('.element__delete-button').addEventListener('click',deleteCard);
-    //смотрим картинки ближе
-    const pic = elementImage; 
-    pic.addEventListener('click',() => {
-        popupTitle.textContent = elementParagraph.textContent;
-      popupImage.src = elementImage.src;
-      popupImage.alt = elementParagraph.textContent;
-      openPopup(popupOpen);
-      })
-    return element;
-}
-//показываем скелет 6 изначальных карточек
-initialCards.forEach((card) => {
-    const newDefaultCard = createCard(card.link, card.name);
-    elementsContainer.append(newDefaultCard);
-});
+addCard(initialCards);
 //добавляем карточки по клику на кнопу добавления
-function addCard(evt) {
+function addCardClick(evt) {
     evt.preventDefault();
-    const newAddCard = createCard(cardLinkInput.value,cardNameInput.value);
-    elementsContainer.prepend(newAddCard);
+    const card = [{
+        name: cardNameInput.value,
+        link: cardLinkInput.value
+    }]
+    addCard(card)
     closePopup(popupAdd);
     resetAddContainer.reset();
-    popupSubmitButton.classList.add(selectors.inactiveButtonClass);
+    popupSubmitButton.classList.add(selectorsItem.inactiveButtonClass);
     popupSubmitButton.setAttribute('disabled', true)
 }
+//Валидация профайла
+const ProfileValidation = new FormValidator(selectorsItem, formElement)
+ProfileValidation.enableValidation();
+//Валидация карточек
+const CardValidation = new FormValidator(selectorsItem, formAElementAdd)
+CardValidation.enableValidation();
 ////////////////////////////////////////////////////////////////////////ВЫЗОВ ФУНКЦИЙ///////////////////////////////
 //вызов функции закрытия окон
 closeButton.addEventListener('click',() => closePopup(popupEdit));
@@ -127,7 +109,7 @@ closeButtonAdd.addEventListener('click',() => closePopup(popupAdd));
 closeButtonOpen.addEventListener('click',() => closePopup(popupOpen));
 //сохрание ручного изменения имени
 formElement.addEventListener('submit', formSubmitHandler);
-formAElementAdd.addEventListener('submit',addCard);
+formAElementAdd.addEventListener('submit',addCardClick);
 
 editButton.addEventListener('click',() => {
     openPopup(popupEdit);

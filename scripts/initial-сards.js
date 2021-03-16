@@ -1,5 +1,5 @@
 /*Карточки на странице по умолчанию*/
-const initialCards = [
+export const initialCards = [
     {
         name: "Копенгаген",
         link: 'https://images.unsplash.com/photo-1543164252-901f6b00034b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzB8fGNvcGVuaGFnZW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
