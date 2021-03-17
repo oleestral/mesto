@@ -10,7 +10,7 @@
   }
 
 export class FormValidator {
-    constructor(selectors, FormElement) {
+    constructor(selectors, formElement) {
         this._formSelector = selectors.formSelector,
         this._inputSelector = selectors.inputSelector,
         this._submitButtonSelector = selectors.submitButtonSelector,
@@ -19,22 +19,24 @@ export class FormValidator {
         this._errorClass = selectors.errorClass,
         this._setSelector = selectors.setSelector,
         this._buttonSelector = selectors.buttonSelector,
-        this._FormElement = FormElement
+        this._formElement = formElement
     }
     //если данные ввели некорректно, возникает ошибка
     _showError(inputElement, errorMessage) {
-        const errorElement = this._FormElement.querySelector(`.${inputElement.id}-error`);
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._inputErrorClass);
         errorElement.textContent = errorMessage;
         errorElement.classList.add(this._errorClass);
     };
     //если данные ввели корректно, ошибка скрывается
     _hideError(inputElement){
-        const errorElement = this._FormElement.querySelector(`.${inputElement.id}-error`);
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.remove(this._inputErrorClass);
         errorElement.classList.remove(this._errorClass);
         errorElement.textContent = "";
     };
+
+
     //проверка введенных данных, вызов функций showError и hideError
     _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
@@ -43,6 +45,8 @@ export class FormValidator {
       this._hideError(inputElement);
     }
   };
+
+  
   // Есть ли здесь хотя бы одно поле, которое не прошло валидацию?
 _hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
@@ -59,25 +63,22 @@ _hasInvalidInput(inputList) {
         buttonElement.classList.remove(this._inactiveButtonClass);
     }
     }
-    //валадицая филдсетов
-    enableValidation() {
-        const formList = Array.from(document.querySelectorAll(this._formSelector));
-        formList.forEach((FormElement) => {
-            FormElement.addEventListener('submit', function (evt) {
-            evt.preventDefault();
-        });
-        this._setEventListeners(FormElement);
-        });
-        this._setEventListeners();
-    }
     _setEventListeners() {
-        const inputList = Array.from(this._FormElement.querySelectorAll(this._inputSelector));
-        const buttonElement = this._FormElement.querySelector(this._submitButtonSelector);
+      this._formElement.addEventListener('submit', function (evt) {
+        evt.preventDefault();
+    });
+    
+        const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+        const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
         inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
-          this._checkInputValidity(inputElement);
+          this._checkInputValidity(inputElement);  
           this._toggleButtonState(inputList, buttonElement);
         });
       });
       };
+          //валадицая филдсетов
+    enableValidation() {
+      this._setEventListeners();
+  }
 }

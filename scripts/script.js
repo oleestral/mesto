@@ -24,14 +24,16 @@ const nameProfile = document.querySelector('.profile__info-name');
 const jobProfile = document.querySelector('.profile__info-self-description');
 const addButton = document.querySelector('.profile__info-add-button');
 
-/*element*/
 /*целый контейнер*/
 const elementsContainer = document.querySelector('.elements');
-
-/********************************************************************************************ФУНКЦИИ**************************************/
-
+//темплейт
+const cardTemplate = document.getElementById('elements-items');
 //переменная для сброса формы добавления карточки
 const resetAddContainer =  document.getElementById('input-container-add');
+
+//все попапы
+const popups = document.querySelectorAll('.popup')
+/********************************************************************************************ФУНКЦИИ**************************************/
 
 //открытие окон с затемнением
 export function openPopup (popup) {
@@ -39,6 +41,17 @@ export function openPopup (popup) {
     // закрытие по Esc
     document.addEventListener('keydown', closePopupEsc)
 }
+//закрытие окон по крестику и оверлею
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-button')) {
+          closePopup(popup)
+        }
+    })
+})
 //закрытие окон по клавише Esc
 function closePopupEsc(evt) {
     if (evt.key === "Escape") {
@@ -46,16 +59,6 @@ function closePopupEsc(evt) {
     closePopup(popupActive)
     }
 }
-//закрытие окон по клику на фон
-popupOrigin.forEach(function(item) {
-    item.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            popupCLose.forEach((item) => {
-                closePopup(item);
-            })
-        }
-    })
-})
 //закрытие окон с затемнением
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
@@ -75,11 +78,12 @@ function formSubmitHandler(evt) {
     jobProfile.textContent = captionInput.value;
     closePopup(popupEdit)
 }
+//добавление дефолтных карточек
 function addCard(array) {
     array.forEach((card) => {
-        const item = new Card(card);
-        const CardElement = item.generateCard();
-        elementsContainer.prepend(CardElement);
+        const item = new Card(card,cardTemplate);
+        const сardElement = item.generateCard();
+        elementsContainer.prepend(сardElement);
     })
 }
 addCard(initialCards);
@@ -90,23 +94,22 @@ function addCardClick(evt) {
         name: cardNameInput.value,
         link: cardLinkInput.value
     }]
-    addCard(card)
+    addCard(card, cardTemplate)
     closePopup(popupAdd);
     resetAddContainer.reset();
     popupSubmitButton.classList.add(selectorsItem.inactiveButtonClass);
     popupSubmitButton.setAttribute('disabled', true)
 }
 //Валидация профайла
-const ProfileValidation = new FormValidator(selectorsItem, formElement)
-ProfileValidation.enableValidation();
+const profileValidation = new FormValidator(selectorsItem, formElement)
+profileValidation.enableValidation();
 //Валидация карточек
-const CardValidation = new FormValidator(selectorsItem, formAElementAdd)
-CardValidation.enableValidation();
+const cardValidation = new FormValidator(selectorsItem, formAElementAdd)
+cardValidation.enableValidation();
 ////////////////////////////////////////////////////////////////////////ВЫЗОВ ФУНКЦИЙ///////////////////////////////
-//вызов функции закрытия окон
-closeButton.addEventListener('click',() => closePopup(popupEdit));
-closeButtonAdd.addEventListener('click',() => closePopup(popupAdd));
-closeButtonOpen.addEventListener('click',() => closePopup(popupOpen));
+
+
+
 //сохрание ручного изменения имени
 formElement.addEventListener('submit', formSubmitHandler);
 formAElementAdd.addEventListener('submit',addCardClick);
@@ -115,4 +118,6 @@ editButton.addEventListener('click',() => {
     openPopup(popupEdit);
     showNamePrifile();
 });
-addButton.addEventListener('click',() => openPopup(popupAdd));
+addButton.addEventListener('click',() => {
+    openPopup(popupAdd);
+})

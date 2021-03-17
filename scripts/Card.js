@@ -6,15 +6,15 @@ const popupTitle = document.querySelector('.popup-open__title');
 
 
 export class Card {
-    constructor(data) {
+    constructor(data, cardTemplateSelector) {
         this._name = data.name;
         this._image = data.link;
+        this._cardTemplateSelector = cardTemplateSelector;
     }
     
     //копируем темплейт
     _getTemplate() {
-        const cardElement = document
-        .querySelector('#elements-items')
+        const cardElement = this._cardTemplateSelector 
         .content
         .querySelector('.element')
         .cloneNode(true);
@@ -30,6 +30,7 @@ export class Card {
             this._element.querySelector('.element__paragraph').textContent = this._name;
     
             return this._element;
+            
         }
     //открытие картинки при нажатии на нее
     _handleOpenImageClick () {
