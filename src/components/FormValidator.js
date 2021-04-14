@@ -1,13 +1,4 @@
- export const selectorsItem = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__button-disabled',
-    inputErrorClass: 'popup__input-type-error',
-    errorClass: 'popup__error_visible',
-    setSelector: '.popup__set',
-    buttonSelector: '.button'
-  }
+
 
 export class FormValidator {
     constructor(selectors, formElement) {
@@ -58,11 +49,18 @@ _hasInvalidInput(inputList) {
         if (this._hasInvalidInput(inputList)) {
         buttonElement.setAttribute('disabled', true);
         buttonElement.classList.add(this._inactiveButtonClass);
+        disableSubmitButton()
     } else {
         buttonElement.removeAttribute('disabled');
         buttonElement.classList.remove(this._inactiveButtonClass);
     }
     }
+    // отключение кнопки при первом открытии
+    disableSubmitButton() {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.disbaled = true;
+    } 
+
     _setEventListeners() {
       this._formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();

@@ -10,3 +10,14 @@ export const addButton = document.querySelector('.profile__info-add-button');
 export const elementsContainer = document.querySelector('.elements');
 //темплейт
 export const cardTemplate = document.getElementById('elements-items');
+
+ export const selectorsItem = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__button-disabled',
+    inputErrorClass: 'popup__input-type-error',
+    errorClass: 'popup__error_visible',
+    setSelector: '.popup__set',
+    buttonSelector: '.button'
+  }

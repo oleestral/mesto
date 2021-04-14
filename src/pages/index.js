@@ -1,13 +1,13 @@
 import './index.css';
 import {Card} from '../components/Card.js';
-import {FormValidator, selectorsItem} from '../components/FormValidator.js';
+import {FormValidator} from '../components/FormValidator.js';
 import {initialCards} from '../components/initial-сards.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
-import {formElement, nameInput, captionInput, formAElementAdd, editButton, addButton, elementsContainer, cardTemplate} from '../utils/constants.js'
+import {formElement, nameInput, captionInput, formAElementAdd, editButton, addButton, elementsContainer, cardTemplate, selectorsItem} from '../utils/constants.js'
 
 //////////////////////Редактирование профайла
 const userProfile = new UserInfo({
@@ -40,17 +40,17 @@ editButton.addEventListener('click', (evt) => {
 const imagePopup = new PopupWithImage('.popup-open');
 imagePopup.setEventListeners();
 
-function createCard(item, popupSelector, handleCardClick) {
-    const card = new Card(item, popupSelector, handleCardClick);
+function createCard(item) {
+    const card = new Card(item, cardTemplate, ()=> {
+        imagePopup.open(item.link,item.name)
+    });
     return card.generateCard();
 }
 
 const cards = new Section({
     items: initialCards,
     renderer: (item) => {
-        const card = createCard(item, cardTemplate, () => {
-            imagePopup.open(item.link,item.name)
-        })
+        const card = createCard(item)
         cards.appendAddItem(card)
     }
 }, elementsContainer)
@@ -63,8 +63,6 @@ const addCardPopup = new PopupWithForm({
         const card = createCard({
             name: item.name,
             link: item.link
-        }, cardTemplate, ()=> {
-            imagePopup.open(item.link, item.name)
         })
         cards.prependAddItem(card);
         addCardPopup.close();
