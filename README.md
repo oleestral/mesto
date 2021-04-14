@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 <p align = "center"><img src = "https://carsweek.ru/upload/resize_cache/iblock/dfa/1200_900_1/dfa6fa9a4eb45126f910e87fb5a97a9a.jpeg" alt = "logo" width = "80%"></p>
+=======
+# Проект 5: Место
+>>>>>>> Stashed changes
 
 # Проект 6: Место 🛫
 
