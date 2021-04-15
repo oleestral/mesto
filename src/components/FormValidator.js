@@ -1,7 +1,9 @@
+//import { selectorsItem } from "../utils/constants";
 
 
 export class FormValidator {
     constructor(selectors, formElement) {
+        this._selector = selectors,
         this._formSelector = selectors.formSelector,
         this._inputSelector = selectors.inputSelector,
         this._submitButtonSelector = selectors.submitButtonSelector,
@@ -10,7 +12,8 @@ export class FormValidator {
         this._errorClass = selectors.errorClass,
         this._setSelector = selectors.setSelector,
         this._buttonSelector = selectors.buttonSelector,
-        this._formElement = formElement
+        this._formElement = formElement,
+        this._buttonElement = this._formElement.querySelector(this._selector.submitButtonSelector)
     }
     //если данные ввели некорректно, возникает ошибка
     _showError(inputElement, errorMessage) {
@@ -47,9 +50,7 @@ _hasInvalidInput(inputList) {
   //если данные ввели некорректно, кнопка становится серой и наоборот
     _toggleButtonState(inputList,buttonElement) {
         if (this._hasInvalidInput(inputList)) {
-        buttonElement.setAttribute('disabled', true);
-        buttonElement.classList.add(this._inactiveButtonClass);
-        disableSubmitButton()
+        this.disableSubmitButton()
     } else {
         buttonElement.removeAttribute('disabled');
         buttonElement.classList.remove(this._inactiveButtonClass);
@@ -57,15 +58,15 @@ _hasInvalidInput(inputList) {
     }
     // отключение кнопки при первом открытии
     disableSubmitButton() {
-      this._buttonElement.classList.add(this._inactiveButtonClass);
-      this._buttonElement.disbaled = true;
+      this._buttonElement.classList.add(this._selector.inactiveButtonClass);
+      this._buttonElement.disabled = true;
     } 
 
     _setEventListeners() {
       this._formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();
+        
     });
-    
         const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
         inputList.forEach((inputElement) => {

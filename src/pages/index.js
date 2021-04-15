@@ -72,6 +72,8 @@ addCardPopup.setEventListeners();
 
 addButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    const resetAddPopup = new FormValidator(selectorsItem, formAElementAdd);
+    resetAddPopup.disableSubmitButton();
     addCardPopup.open();
 })
 //Валидация профайла
