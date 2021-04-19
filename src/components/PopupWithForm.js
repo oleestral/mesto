@@ -6,6 +6,9 @@ export default class PopupWithForm extends Popup {
         this._submitForm = submitForm;
         this._popupForms = this._popup.querySelector('.popup__form');
         this._inputList = this._popupForms.querySelectorAll('.popup__input');
+        this._saveButton = this._popupForms.querySelector('.popup__save-button');
+        this._loadingButton = this._popupForms.querySelector('.popup__loading-button');
+        
         
     }
     _getInputValues() {
@@ -24,5 +27,15 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();
         this._popupForms.reset();
+    }
+    renderLoading(isLoading) {
+        if(isLoading) {
+            this._saveButton.classList.add('popup__button-invisible');
+            this._loadingButton.classList.remove('popup__button-invisible');
+        }
+        else{
+            this._saveButton.classList.remove('popup__button-invisible');
+            this._loadingButton.classList.add('popup__button-invisible');
+        }
     }
 }
