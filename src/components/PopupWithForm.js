@@ -32,6 +32,7 @@ export default class PopupWithForm extends Popup {
         if(isLoading) {
             this._saveButton.classList.add('popup__button-invisible');
             this._loadingButton.classList.remove('popup__button-invisible');
+            this._loadingButton.disabled = true
         }
         else{
             this._saveButton.classList.remove('popup__button-invisible');

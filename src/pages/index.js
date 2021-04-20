@@ -16,6 +16,7 @@ let userID;
 //Получаем  с сервера дефолтные картинки и информацию о пользователе
 Promise.all([api.getInitialCards(), api.getUserInfo()])
 .then(([defaultCards, userInfo])=> {
+    userID = userInfo._id;
     cards.renderItems(defaultCards);
     userProfile.setUserInfo({
         name: userInfo.name,
@@ -93,14 +94,14 @@ const editUserAvatar = new PopupWithForm({
 //Создание и добавление карточек 
 const cards = new Section({
     renderer: (item) => { 
-        const card = createCard(item, cardTemplate, '6584c44fb919a25caa4eda43')
+        const card = createCard(item, cardTemplate, userID)
         cards.appendAddItem(card)
     }, 
 }, elementsContainer)
 
 const imagePopup = new PopupWithImage('.popup-open'); 
 
-function createCard(item, cardTemplateSelector, currentUserID) { 
+function createCard(item) { 
     const card = new Card(item, cardTemplate, {
         //cмотрим ближе
         handleCardClick: ()=> {
@@ -146,7 +147,7 @@ function createCard(item, cardTemplateSelector, currentUserID) {
             
         },
 
-    }, currentUserID)
+    }, userID)
     return card.generateCard(); 
 } 
 //добавление карточки
